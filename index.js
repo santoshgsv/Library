@@ -38,23 +38,5 @@ Request.get('http://localhost:8090/api/books', (error, response, body) => {
 
 });
 
-var loc = (location, callback) => {
-    Request.get('http://localhost:8090/api/books', (error, response, body) => {
-    if(error) {
-        callback (error);
-    }
-    else if(body.location === 'No Results') {
-        callback ('No Books Found for the given Location');
-    }
-    else if(body.location === 'OK') {
-        callback(undefined,{
-         loc: body.location
-        });
-    }
-    
-});
-};
-
-module.exports = loc;
 
 
