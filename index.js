@@ -36,6 +36,26 @@ Request.get('http://localhost:8090/api/books', (error, response, body) => {
     }
     console.log(JSON.parse(JSON.stringify(body)));
 
+    resultOfBooks = [];
+    location = 'Hyderabad';
+    resultOfBooks.forEach(function(eachBook){
+        if(eachBook.location === location) {
+            resultOfBooks.push(eachBook);
+        }
+        Console.log('Books from Desired Location are Displayed');
+        
+        resultOfBooks.save(function(err){
+        
+            if(err){
+                res.send(err);
+            }
+            res.json({ message: 'Book Saved to the Database.!!' });
+        })
+    
+    });
+   
+   
+    
 });
 
 

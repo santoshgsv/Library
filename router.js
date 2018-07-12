@@ -69,27 +69,28 @@ router.route('/books/:book_id').delete(function (req, res) {
       }
       res.json({ message: 'Book deleted' });
   })
-
 });
-
 
 router.route('/books/:location').get(function (req, res) {
 
-  bk.find({ location: req.param.location }, function (err, bk) {
-      if (err) {
-          res.send(err);
-      }
-      res.json({ message: 'Books for the desired location are displayed' });
-      
-      bk.save(function (err) {
-        if (err)
+    bk.find({ location: req.param.location }, function (err, bk) {
+        if (err) {
             res.send(err);
-
-        res.json({ message: 'Book Saved to the Database.!!' });
-    });
-
-  })
+        }
+        res.json({ message: 'Books for the desired location are displayed' });
+        
+        bk.save(function (err) {
+          if (err)
+              res.send(err);
   
-});
+          res.json({ message: 'Book Saved to the Database.!!' });
+      });
+  
+    })
+    
+  });
+
+
+    
 
 module.exports = router;
